@@ -1,0 +1,18 @@
+services:
+    frontend.form_handlers.default:
+        arguments: ["@form.factory", "@router", "@templating", "@doctrine.orm.default_entity_manager", "@session"]
+        calls:
+            - [setContainer, ["@service_container"]]
+            - [setRequestStack, ["@request_stack"]]
+        abstract:  true
+
+    frontend.form_flat_options_retriever:
+        class: AppBundle\Form\Handler\FormFlatOptionsRetriever
+        arguments: ["@translator"]
+
+    frontend.form_handlers.user:
+        class: AppBundle\Form\Handler\UserFormHandler
+        parent: frontend.form_handlers.default
+        calls:
+          - [ setViewHandler, ["@fos_rest.view_handler"] ]
+          - [ setOptionsRetriever, ["@frontend.form_flat_options_retriever"] ]

@@ -1,0 +1,270 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row head-row">
+            <div class="col-md-8">
+                <h1>Application Form</h1>
+            </div>
+            <div class="col-md-4 text-right">
+                {# open edit form #}
+                <button type="button" class="edit-button" data-toggle="modal" data-target="#edit-form">Edit</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="head-line"></div>
+            </div>
+        </div>
+
+        {# ProfileInfoApp module View #}
+        <div id="profile-info-container"></div>
+    </div>
+
+    {# ProfileFormApp module View #}
+    <div id="edit-form-container"></div>
+
+    {# ProfileInfoApp module Template #}
+    <script type="x-template/underscore" id="profile-info-tmpl">
+        <div class="row body-row">
+            <div class="col-md-3">
+                <div class="panel panel-default equal-height">
+                    <div class="panel-body">
+
+                        <% if (userName) { %>
+                            <h2><%- userName %></h2>
+                        <% } %>
+
+                        <ul>
+
+                            <% if (userBirthday) { %>
+                                <li><%- moment(userBirthday).format('DD MMMM YYYY') %></li>
+                            <% } %>
+
+                            <% if (userEmail) { %>
+                                <li>
+                                    <a href="mailto:<%- userEmail %>"><%- userEmail %></a>
+                                </li>
+                            <% } %>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default equal-height">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <ul class="text-right">
+
+                                    <% if (siteUrl) { %>
+                                        <li><%- siteUrl %></li>
+                                    <% } %>
+
+                                    <% if (userPhone) { %>
+                                        <li>
+                                            <a href="callto:<%- userPhone %>"><%- userPhone %></a>
+                                        </li>
+                                    <% } %>
+
+                                    <% if (userSkill) { %>
+                                        <li>Skill <%- userSkill %></li>
+                                    <% } %>
+
+                                    <% if (userGender) { %>
+                                        <li>
+                                            <% if (userGender === '0') { %>
+                                                Male
+                                            <% } else { %>
+                                                Female
+                                            <% } %>
+                                        </li>
+                                    <% } %>
+
+                                </ul>
+                            </div>
+                            <div class="col-md-8">
+
+                                <% if (userAbout) { %>
+                                    <p><%- userAbout %></p>
+                                <% } %>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    {# ProfileFormApp module Template #}
+    <script type="x-template/underscore" id="edit-form-tmpl">
+        <div class="modal fade" id="edit-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title text-center">Edit</h3>
+
+                        <div class="btns-block">
+                            <button type="button" class="cancell-button" data-dismiss="modal">Cancell</button>
+                            <span class="buttons-separator"></span>
+                            <button type="button" class="save-button">Save</button>
+                            <div class="sk-fading-circle hide">
+                                <div class="sk-circle1 sk-circle"></div>
+                                <div class="sk-circle2 sk-circle"></div>
+                                <div class="sk-circle3 sk-circle"></div>
+                                <div class="sk-circle4 sk-circle"></div>
+                                <div class="sk-circle5 sk-circle"></div>
+                                <div class="sk-circle6 sk-circle"></div>
+                                <div class="sk-circle7 sk-circle"></div>
+                                <div class="sk-circle8 sk-circle"></div>
+                                <div class="sk-circle9 sk-circle"></div>
+                                <div class="sk-circle10 sk-circle"></div>
+                                <div class="sk-circle11 sk-circle"></div>
+                                <div class="sk-circle12 sk-circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="form-title">Application Form</h2>
+                            </div>
+                        </div>
+
+                        <form name="editProfileForm" id="editProfileForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="md-form">
+                                        <input type="text" id="userName" name="userName" class="form-control" required value="<%- userName %>">
+                                        <label for="userName">User Name</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="md-form">
+                                        <input type="text" id="userBirthday" name="userBirthday" class="form-control datepicker" value="<%- userBirthday %>">
+                                        <label for="userBirthday">Birthdate</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="md-form">
+                                        <input type="email" id="userEmail" name="userEmail" class="form-control validate" value="<%- userEmail %>">
+                                        <label for="userEmail" data-error="Invalid Email">Email</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="md-form">
+                                        <input type="url" id="siteUrl" name="siteUrl" class="form-control validate" value="<%- siteUrl %>">
+                                        <label for="siteUrl" data-error="Invalid URL">URL</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="md-form">
+                                        <input type="tel" id="userPhone" name="userPhone" class="form-control" value="<%- userPhone %>">
+                                        <label for="userPhone">Phone Number</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="md-form">
+                                        <input type="number" id="userSkill" name="userSkill" class="form-control" value="<%- userSkill %>">
+                                        <label for="userSkill">Skill Number</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2" id="userGender">
+                                    <div class="radio">
+
+                                        <% if (userGender === '0') { %>
+                                            <input type="radio" id="userMale" name="userGender" value="0" checked>
+                                        <% } else { %>
+                                            <input type="radio" id="userMale" name="userGender" value="0">
+                                        <% } %>
+
+                                        <label for="userMale">Male</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="radio">
+
+                                        <% if (userGender === '1') { %>
+                                            <input type="radio" id="userFemale" name="userGender" value="1" checked>
+                                        <% } else { %>
+                                            <input type="radio" id="userFemale" name="userGender" value="1">
+                                        <% } %>
+
+                                        <label for="userFemale">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="md-form">
+                                        <input type="password" id="password" name="password" class="form-control">
+                                        <label for="password">Password</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="md-form">
+                                        <input type="password" id="repeatPassword" name="repeatPassword" class="form-control validate">
+                                        <label for="repeatPassword" data-error="Passwords do not match">Repeat Password</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="md-form">
+                                        <textarea type="text" id="userAbout" name="userAbout" class="md-textarea"><%- userAbout %></textarea>
+                                        <label for="userAbout">Enter a brief description of yourself and interest</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    {# ProfileFormApp module error messages Template #}
+    <script type="x-template/underscore" id="validate-errors-tmpl">
+        <% _.each(errors, function(error) { %>
+            <p class="text-danger error-message"><%- error %></p>
+        <% }); %>
+    </script>
+
+    {# ProfileFormApp module messages Template #}
+    <script type="x-template/underscore" id="messages-tmpl">
+        <div class="<%- type %>" role="alert"><%- message %></div>
+    </script>
+
+    {# App.model Initialization data #}
+    <script type="text/json" id="user-model">
+        {
+            "_csrf": "{{ csrf_token('user') }}",
+            "userName": "{{ user.userName }}",
+            "userEmail": "{{ user.userEmail }}",
+            "siteUrl": "{{ user.siteUrl }}",
+            "userPhone": "{{ user.userPhone }}",
+            "userBirthday": "{{ user.userBirthday.date|date('Y-m-d') }}",
+            "userGender": "{{ user.userGender ? user.userGender : 0 }}",
+            "userAbout": "{{ user.userAbout }}",
+            "userSkill": "{{ user.userSkill }}"
+        }
+    </script>
+{% endblock %}

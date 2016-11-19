@@ -1,0 +1,240 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #C4C4C4;
+    padding: 2rem;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 300;
+}
+
+a {
+    color: #48A6DF;
+}
+
+.container-fluid {
+    max-width: 1600px;
+}
+
+.head-row {
+    padding: 2rem 0 0;
+
+    h1 {
+        color: #7C7C7D;
+    }
+
+    .edit-button {
+        position: relative;
+        top: 1.5rem;
+        color: #C4C4C4;
+        background: none;
+        border: 0 none;
+        font-size: 1.25rem;
+        font-weight: 300;
+
+        &:hover {
+            color: #7C7C7D;
+        }
+    }
+}
+
+.head-line {
+    height: 1px;
+    margin-top: 6rem;
+    border-bottom: 1px #E1E1E1 solid;
+}
+
+.body-row {
+    padding: 3rem 0;
+
+    .panel {
+        h2 {
+            margin-top: 0;
+            padding: 0;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+}
+
+.modal {
+    background: #fff;
+}
+
+.modal-header {
+    position: relative;
+
+    .btns-block {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        button {
+            background: none;
+            border: 0 none;
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1px;
+            bottom: .5rem;
+            padding: 0 1rem;
+            position: relative;
+
+            &:hover {
+                color: #7C7C7D;
+            }
+        }
+    }
+
+    .cancell-button {
+        color: #C4C4C4;
+    }
+
+    .save-button {
+        color: #48A6DF;
+    }
+
+    .buttons-separator {
+        width: 1px;
+        height: 3rem;
+        background: #ccc;
+        display: inline-block;
+        top: .5rem;
+        position: relative;
+    }
+}
+
+.modal-content {
+    background: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.modal-dialog {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.modal-body {
+    margin: 5rem auto 0;
+}
+
+#editProfileForm {
+    margin-top: 5rem;
+}
+
+.md-form label {
+    font-weight: 300;
+    color: #C4C4C4;
+}
+
+.radio {
+    padding-left: 2rem;
+    margin-top: 1.15rem;
+}
+
+.radio label {
+    display: inline-block;
+    position: relative;
+    padding-left: 0;
+    font-size: 1rem;
+}
+
+.radio label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 1.3rem;
+    height: 1.3rem;
+    left: 0;
+    margin-left: -2rem;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: border 0.15s ease-in-out;
+}
+
+.radio label::after {
+    display: inline-block;
+    position: absolute;
+    content: "\2714";
+    color: #fff;
+    text-align: center;
+    line-height: 1.3rem;
+    font-size: .9rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    left: 0;
+    top: 0;
+    margin-left: -2rem;
+    border-radius: 50%;
+    background-color: #555555;
+    transform: scale(0, 0);
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+}
+
+.radio input[type="radio"] {
+    opacity: 0;
+}
+
+.radio input[type="radio"]:checked + label::after {
+    transform: scale(1, 1);
+}
+
+.radio input[type="radio"] + label::after, .radio input[type="radio"]:checked + label::before {
+    background-color: #428bca;
+}
+
+input[type=date].invalid+label:after, input[type=date]:focus.invalid+label:after, input[type=datetime-local].invalid+label:after, input[type=datetime-local]:focus.invalid+label:after, input[type=email].invalid+label:after, input[type=email]:focus.invalid+label:after, input[type=number].invalid+label:after, input[type=number]:focus.invalid+label:after, input[type=password].invalid+label:after, input[type=password]:focus.invalid+label:after, input[type=search-md].invalid+label:after, input[type=search-md]:focus.invalid+label:after, input[type=search].invalid+label:after, input[type=search]:focus.invalid+label:after, input[type=tel].invalid+label:after, input[type=tel]:focus.invalid+label:after, input[type=text].invalid+label:after, input[type=text]:focus.invalid+label:after, input[type=time].invalid+label:after, input[type=time]:focus.invalid+label:after, input[type=url].invalid+label:after, input[type=url]:focus.invalid+label:after, textarea.md-textarea.invalid+label:after, textarea.md-textarea:focus.invalid+label:after {
+    width: 200px;
+}
+
+.modal-body {
+    max-width: 1400px;
+}
+
+@media (max-width: 980px) {
+    body {
+        padding: 0;
+    }
+
+    .modal-body {
+        width: 100%;
+    }
+
+    .text-right {
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .head-line {
+        margin-top: 3rem;
+    }
+
+    .modal-body {
+        margin-top: 0;
+    }
+
+    #editProfileForm {
+        margin-top: 3rem;
+    }
+
+    .modal-title {
+        text-align: left;
+        font-size: 1.57rem;
+    }
+}
