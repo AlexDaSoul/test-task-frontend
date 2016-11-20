@@ -73,9 +73,9 @@
                                         <li>Skill <%- userSkill %></li>
                                     <% } %>
 
-                                    <% if (userGender) { %>
+                                    <% if (!_.isUndefined(userGender)) { %>
                                         <li>
-                                            <% if (userGender === '0') { %>
+                                            <% if (userGender === '0' || userGender === 0) { %>
                                                 Male
                                             <% } else { %>
                                                 Female
