@@ -18,7 +18,7 @@ module.exports = function (grunt) {
         coffee: require('./grunt/coffee')(path),
 
         /** coffee-jshint task */
-        coffee_jshint: require('./grunt/jshint')(path),
+        coffee_jshint: require('./grunt/coffee_jshint')(path),
 
         /** Sass task */
         sass: require('./grunt/sass')(path),
